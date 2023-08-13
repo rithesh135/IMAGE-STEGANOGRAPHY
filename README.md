@@ -20,23 +20,14 @@ Here are the steps you will need to execute to build this Image Steganography pr
 **Initializing the root window and placing all components in it:**
 
 	root = Tk()
-
 	root.title('Proton Image Steganography')
-
 	root.geometry('300x200')
-
 	root.resizable(0, 0)
-
 	root.config(bg='NavajoWhite')
-
 	Label(root, text='Proton Image Steganography', font=('Comic Sans MS', 15), bg='NavajoWhite', wraplength=300).place(x=40, y=0)
-
 	Button(root, text='Encode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=encode_image).place(x=30, y=80)
-
 	Button(root, text='Decode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=decode_image).place(x=30, y=130)
-
 	root.update()
-
 	root.mainloop()
 
 **Explanation:**
@@ -74,4 +65,62 @@ The Label class is used to create a Label on the window that displays static tex
 
 **Defining all the backend encryption and decryption functions:**
 
-
+	def generate_data(pixels, data):
+ 	data_in_binary = []
+	for i in data:
+	binary_data = format(ord(i), '08b')
+	data_in_binary.append(binary_data)
+	length_of_data = len(data_in_binary)
+	image_data = iter(pixels)
+	for a in range(length_of_data):
+	pixels = [val for val in image_data.__next__()[:3] + image_data.__next__()[:3] + image_data.__next__()[:3]]
+	for b in range(8):
+	if (data_in_binary[a][b] == '1') and (pixels[b] % 2 != 0):
+	pixels[b] -= 1
+	elif (data_in_binary[a][b] == '0') and (pixels[b] % 2 == 0):
+	if pixels[b] == 0:
+	pixels[b] += 1
+	pixels[b] -= 1
+	if (length_of_data-1) == a:
+	if pixels[-1] % 2 == 0:
+	if pixels[-1] == 0:
+	pixels[-1] += 1
+	else:
+	pixels[-1] -= 1
+	pixels = tuple(pixels)
+	yield pixels[:3]
+	yield pixels[3:6]
+	yield pixels[6:9]
+	def encryption(img, data):
+	size = img.size[0]
+	(x, y) = (0, 0)
+	for pixel in generate_data(img.getdata(), data):
+	img.putpixel((x, y), pixel)
+	if size-1 == x:
+	x = 0; y += 1
+	else:
+	x += 1
+	def main_encryption(img, text, new_image_name):
+	image = Image.open(img, 'r')
+	if (len(text) == 0) or (len(img) == 0) or (len(new_image_name) == 0):
+	mb.showerror("Error", 'You have not put a value! Please put all values before pressing the button')
+	new_image = image.copy()
+	encryption(new_image, text)
+	new_image_name += '.png'
+	new_image.save(new_image_name, 'png')
+	def main_decryption(img, strvar):
+	image = Image.open(img, 'r')
+	data = ''
+	image_data = iter(image.getdata())
+	decoding = True
+	while decoding:
+	pixels = [value for value in image_data.__next__()[:3] + image_data.__next__()[:3] + image_data.__next__()[:3]]
+	binary_string = ''
+	for i in pixels[:8]:
+	if i % 2 == 0:
+	binary_string += '0'
+	else:
+	binary_string += '1'
+	data += chr(int(binary_string, 2))
+	if pixels[-1] % 2 != 0:
+	strvar.set(data)
