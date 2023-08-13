@@ -9,6 +9,7 @@ While the Tkinter library comes pre-installed with Python, the PIL library does 
 **python -m pip install pillow**
 
 **Project File Structure:**
+
 Here are the steps you will need to execute to build this Image Steganography project in Python:
 :white_check_mark:Initializing the root window and placing all components in it
 
@@ -44,6 +45,27 @@ root.update()
 
 root.mainloop()
 
+**Explanation:**
+
+We will assign the Tk() class to the root variable to initialize the window. The methods and attributes that need to be set during initializing are:
+
+.callout_info The .title() method is used to give a title to the window.
+	The .geometry() method is used to define the initial dimensions of the window in pixels.
+	The .resizable() method specifies whether the user will be allowed to resize the window or not. It takes only truth and falsy values in the form of (width, height).
+	The .config() method is used to configure other attributes of the window, such as the bg attribute which denotes the colour of the background of the window.
+	The .update() and .mainloop() methods put the window in a loop to prevent it from closing until told otherwise.
+	Note:
+These two lines will be the last lines in a GUI script that the Python interpreter will run in it.
+The Label class is used to create a Label on the window that displays static text on the window. Its parameters that need to be set during assignment are:
+	The master parameter, the positional argument root here, is the parent widget this widget is associated with.
+	The text parameter refers to the text that will be displayed on the label.
+	The font parameter defines the font family, size and effects that will be applied to the text displayed on the label.
+	The wraplength parameter specifies the number of pixels after which the text has to be moved to the next line.
+The Button class is used to add a button to the window that runs a function when it is pressed. Its parameters are:
+	The command parameter is used to define the function that will run when the button is pressed. You will not need the lambda keyword if the function to run does not need any arguments.
+The .place() method is used to place a widget on its parent widget as though the parent is a Cartesian Plane, with the Northwest corner being the origin of that plane.
+	The x,y parameters define the horizontal and vertical offsets of the widget, respectively.
+	The relx,rely parameters define the horizontal and vertical offsets as a decimal number between 0.0 and 1.0
 
 
 
