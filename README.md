@@ -19,27 +19,25 @@ Here are the steps you will need to execute to build this Image Steganography pr
 
 **Initializing the root window and placing all components in it:**
 
-	.py root = Tk()
+	root = Tk()
 
-	.callout_inforoot.title('Proton Image Steganography')
+	root.title('Proton Image Steganography')
 
-	.callout_inforoot.geometry('300x200')
+	root.geometry('300x200')
 
-	.callout_inforoot.resizable(0, 0)
+	root.resizable(0, 0)
 
-	.callout_inforoot.config(bg='NavajoWhite')
+	root.config(bg='NavajoWhite')
 
-	.callout_infoLabel(root, text='Proton Image Steganography', font=('Comic Sans MS', 15), bg='NavajoWhite',
+	Label(root, text='Proton Image Steganography', font=('Comic Sans MS', 15), bg='NavajoWhite', wraplength=300).place(x=40, y=0)
 
-	.callout_infowraplength=300).place(x=40, y=0)
+	Button(root, text='Encode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=encode_image).place(x=30, y=80)
 
-	.callout_infoButton(root, text='Encode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=encode_image).place(x=30, y=80)
+	Button(root, text='Decode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=decode_image).place(x=30, y=130)
 
-	.callout_infoButton(root, text='Decode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=decode_image).place(x=30, y=130)
+	root.update()
 
-	.callout_inforoot.update()
-
-	.callout_inforoot.mainloop()
+	root.mainloop()
 
 **Explanation:**
 
