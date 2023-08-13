@@ -19,7 +19,7 @@ Here are the steps you will need to execute to build this Image Steganography pr
 
 **Initializing the root window and placing all components in it:**
 
-	.callout_inforoot = Tk()
+	.py root = Tk()
 
 	.callout_inforoot.title('Proton Image Steganography')
 
