@@ -19,45 +19,48 @@ Here are the steps you will need to execute to build this Image Steganography pr
 
 **Initializing the root window and placing all components in it:**
 
-root = Tk()
+	.callout_inforoot = Tk()
 
-root.title('Proton Image Steganography')
+	.callout_inforoot.title('Proton Image Steganography')
 
-root.geometry('300x200')
+	.callout_inforoot.geometry('300x200')
 
-root.resizable(0, 0)
+	.callout_inforoot.resizable(0, 0)
 
-root.config(bg='NavajoWhite')
+	.callout_inforoot.config(bg='NavajoWhite')
 
-Label(root, text='Proton Image Steganography', font=('Comic Sans MS', 15), bg='NavajoWhite',
+	.callout_infoLabel(root, text='Proton Image Steganography', font=('Comic Sans MS', 15), bg='NavajoWhite',
 
-wraplength=300).place(x=40, y=0)
+	.callout_infowraplength=300).place(x=40, y=0)
 
-Button(root, text='Encode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=encode_image).place(
+	.callout_infoButton(root, text='Encode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=encode_image).place(x=30, y=80)
 
-x=30, y=80)
+	.callout_infoButton(root, text='Decode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=decode_image).place(x=30, y=130)
 
-Button(root, text='Decode', width=25, font=('Times New Roman', 13), bg='SteelBlue', command=decode_image).place(
+	.callout_inforoot.update()
 
-x=30, y=130)
-
-root.update()
-
-root.mainloop()
+	.callout_inforoot.mainloop()
 
 **Explanation:**
 
 We will assign the Tk() class to the root variable to initialize the window. The methods and attributes that need to be set during initializing are:
 
-	.callout_infoThe .title() method is used to give a title to the window.
-	The .geometry() method is used to define the initial dimensions of the window in pixels.
-	The .resizable() method specifies whether the user will be allowed to resize the window or not. It takes only truth and falsy values in the form of (width, height).
-	The .config() method is used to configure other attributes of the window, such as the bg attribute which denotes the colour of the background of the window.
-	The .update() and .mainloop() methods put the window in a loop to prevent it from closing until told otherwise.
-	Note:
+The .title() method is used to give a title to the window.
+
+The .geometry() method is used to define the initial dimensions of the window in pixels.
+
+The .resizable() method specifies whether the user will be allowed to resize the window or not. It takes only truth and falsy values in the form of (width, height).
+
+The .config() method is used to configure other attributes of the window, such as the bg attribute which denotes the colour of the background of the window.
+
+The .update() and .mainloop() methods put the window in a loop to prevent it from closing until told otherwise.
+
+**Note:**
+
 These two lines will be the last lines in a GUI script that the Python interpreter will run in it.
 The Label class is used to create a Label on the window that displays static text on the window. Its parameters that need to be set during assignment are:
-	The master parameter, the positional argument root here, is the parent widget this widget is associated with.
+
+.callout_warn The master parameter, the positional argument root here, is the parent widget this widget is associated with.
 	The text parameter refers to the text that will be displayed on the label.
 	The font parameter defines the font family, size and effects that will be applied to the text displayed on the label.
 	The wraplength parameter specifies the number of pixels after which the text has to be moved to the next line.
