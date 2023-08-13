@@ -49,7 +49,7 @@ root.mainloop()
 
 We will assign the Tk() class to the root variable to initialize the window. The methods and attributes that need to be set during initializing are:
 
-.callout_info The .title() method is used to give a title to the window.
+	.callout_infoThe .title() method is used to give a title to the window.
 	The .geometry() method is used to define the initial dimensions of the window in pixels.
 	The .resizable() method specifies whether the user will be allowed to resize the window or not. It takes only truth and falsy values in the form of (width, height).
 	The .config() method is used to configure other attributes of the window, such as the bg attribute which denotes the colour of the background of the window.
